@@ -43,3 +43,5 @@ next-env.d.ts
 
 # Documento con datos personales: no se publica ni se versiona.
 docs-brief/privado/
+
+.vercel
