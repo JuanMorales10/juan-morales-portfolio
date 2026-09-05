@@ -80,6 +80,5 @@ export const navigation = [
  */
 export const pendingAssets = [
   "Dominio definitivo (variable de entorno `NEXT_PUBLIC_SITE_URL`).",
-  "Foto profesional original en alta resolución (la actual es una copia de LinkedIn de 400 x 400).",
   "Confirmar la fecha de emisión del certificado de IA: el diploma dice 31 de julio de 2024, el brief decía agosto de 2024.",
 ] as const;

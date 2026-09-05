@@ -25,8 +25,8 @@ export const hero = {
   portrait: {
     src: "/perfil/juan-morales.jpg",
     alt: "Retrato de Juan Morales.",
-    width: 400,
-    height: 400,
+    width: 800,
+    height: 800,
   },
 } as const;
 

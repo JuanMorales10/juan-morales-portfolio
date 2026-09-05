@@ -142,13 +142,13 @@ export function Hero() {
                 className="col-span-12 md:col-span-4 md:col-start-9 lg:col-span-3 lg:col-start-10"
               >
                 <figure className="flex items-center gap-4 md:flex-col md:items-end md:gap-3">
-                  <div className="screen h-16 w-16 shrink-0 md:h-24 md:w-24">
+                  <div className="screen h-20 w-20 shrink-0 md:h-32 md:w-32">
                     <Image
                       src={hero.portrait.src}
                       alt={hero.portrait.alt}
                       width={hero.portrait.width}
                       height={hero.portrait.height}
-                      sizes="(max-width: 768px) 64px, 96px"
+                      sizes="(max-width: 768px) 80px, 128px"
                       priority
                       className="h-full w-full object-cover"
                     />
