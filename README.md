@@ -89,7 +89,6 @@ falso ni un enlace roto**. La lista viva está en `pendingAssets`, dentro de
 `src/content/site.ts`. Hoy:
 
 - Dominio propio (`NEXT_PUBLIC_SITE_URL`). Hoy apunta a la URL de Vercel; Juan lo cambia cuando tenga el dominio.
-- Foto profesional original en alta resolución (la actual es una copia de LinkedIn de 400 x 400).
 - Confirmar la emisión del certificado de IA: el diploma dice 31 de julio de 2024 y el brief decía agosto.
 
 ### Un archivo que quedó afuera a propósito

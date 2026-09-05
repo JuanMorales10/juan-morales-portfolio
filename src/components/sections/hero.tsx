@@ -72,8 +72,8 @@ function buildProducts(list: Project[]): ParallaxProduct[] {
  * dos columnas de capturas que derivan solas (lo resuelve `HeroParallax`
  * debajo de `md`). El encabezado es el mismo en todos los anchos.
  *
- * El retrato disponible es una copia de LinkedIn de 400 x 400: se usa chico,
- * donde todavía se ve nítido en pantallas de alta densidad.
+ * El retrato es el original de 800 x 800 que Juan tiene en LinkedIn, así que
+ * aguanta el marco de 128 px incluso al doble de densidad.
  */
 export function Hero() {
   const products = buildProducts(projects);
