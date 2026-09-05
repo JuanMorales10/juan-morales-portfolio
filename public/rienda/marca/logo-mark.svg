@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Rienda</title>
+  <desc id="desc">R mayúscula de Rienda, en papel sobre fondo tinta.</desc>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0E1818"/>
+  <!-- Plus Jakarta Sans ExtraBold convertida a curvas. La transformación la
+       centra y la mantiene dentro de la zona segura maskable de Android. -->
+  <path d="M66 0L66 745L351 745Q428 745 487.5 718Q547 691 581 638Q615 585 615 507Q615 431 580 377.5Q545 324 486 297L656 0L482 0L298 329L398 270L221 270L221 0Z M221 405L352 405Q385 405 409 418Q433 431 446.5 454Q460 477 460 507Q460 538 446.5 561Q433 584 409 597Q385 610 352 610L221 610Z" transform="translate(12.61745 52) scale(.0536913 -.0536913)" fill="#EFF8F8" fill-rule="evenodd"/>
+</svg>

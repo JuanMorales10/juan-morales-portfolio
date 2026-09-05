@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 96" role="img" aria-labelledby="title desc">
+  <title id="title">Rienda</title>
+  <desc id="desc">Logotipo de Rienda para fondos oscuros: R mayúscula y wordmark en papel.</desc>
+  <!-- Misma geometría que logo-mark.svg, en versión papel. -->
+  <g transform="translate(8 8) scale(1.25)">
+    <rect x="2" y="2" width="60" height="60" rx="16" fill="#EFF8F8"/>
+    <path d="M66 0L66 745L351 745Q428 745 487.5 718Q547 691 581 638Q615 585 615 507Q615 431 580 377.5Q545 324 486 297L656 0L482 0L298 329L398 270L221 270L221 0Z M221 405L352 405Q385 405 409 418Q433 431 446.5 454Q460 477 460 507Q460 538 446.5 561Q433 584 409 597Q385 610 352 610L221 610Z" transform="translate(12.61745 52) scale(.0536913 -.0536913)" fill="#00615F" fill-rule="evenodd"/>
+  </g>
+  <!-- Mismos valores que logo-primary y que BrandWordmark en el producto. -->
+  <text x="105" y="68" fill="#EFF8F8" font-family="Plus Jakarta Sans, Arial, sans-serif" font-size="57" font-weight="600" letter-spacing="-1.4">Rienda</text>
+</svg>
