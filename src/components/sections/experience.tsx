@@ -7,8 +7,9 @@ import { Reveal } from "@/components/primitives/reveal";
 import { ScrollParallax } from "@/components/primitives/scroll-parallax";
 import { SectionLabel } from "@/components/primitives/section";
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline";
-import { publishedRoles } from "@/content/experience";
+import { employerLabel, publishedRoles } from "@/content/experience";
 import { getProject } from "@/content/projects";
+import { realValue } from "@/content/site";
 import type { Project, Role } from "@/content/types";
 
 /**
@@ -63,15 +64,17 @@ export function Experience() {
 }
 
 function RoleContent({ role, project }: { role: Role; project?: Project }) {
+  const empresa = realValue(role.company);
+
   return (
     <div className="pb-6 md:pb-10">
       <h3 id={`rol-${role.id}`} className="text-h3">
-        {role.companyUrl ? (
+        {empresa && role.companyUrl ? (
           <DirectionalLink href={role.companyUrl} external className="hover:text-jade">
-            {role.company}
+            {empresa}
           </DirectionalLink>
         ) : (
-          role.company
+          employerLabel(role)
         )}
       </h3>
 

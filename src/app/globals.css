@@ -347,7 +347,7 @@
     size: A4;
     /* Márgenes de carta, no de libro. Con 16mm abajo el CV se iba a una tercera
        hoja por cuatro renglones. */
-    margin: 12mm 14mm 12mm;
+    margin: 11mm 14mm 10mm;
   }
 
   :root {
@@ -359,9 +359,10 @@
   body {
     background: #ffffff !important;
     color: #000000 !important;
-    /* 10 puntos entran dos hojas con el recorrido completo. Más chico deja de
-       leerse cómodo en papel y no gana una página entera. */
-    font-size: 10pt;
+    /* 9,5 puntos: con cuatro puestos y cinco formaciones, 10 se iba a una
+       tercera hoja por dos renglones. Sigue siendo un cuerpo cómodo en papel,
+       del mismo orden que usa cualquier CV impreso. */
+    font-size: 9.5pt;
   }
 
   [data-print="hide"] {
@@ -378,6 +379,12 @@
 
   .print-avoid-break {
     break-inside: avoid;
+  }
+
+  /* La línea de fechas de un puesto no puede quedar sola al pie: el nombre del
+     cargo aparecería en la hoja siguiente, separado de su período. */
+  .print-keep-next {
+    break-after: avoid;
   }
 
   h2,

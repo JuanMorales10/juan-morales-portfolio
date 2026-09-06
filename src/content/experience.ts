@@ -1,4 +1,4 @@
-import { isPlaceholder, showPending } from "./site";
+import { realValue, showPending } from "./site";
 import type { Credential, Language, Role } from "./types";
 
 /**
@@ -47,8 +47,9 @@ export const roles: Role[] = [
   {
     id: "barcelona-junior",
     /* Juan corrigió que este puesto fue en una empresa de España y en nivel
-       junior. Hasta que dé el nombre real, la empresa queda como marcador y el
-       puesto no se publica: ver `publishedRoles` más abajo. */
+       junior, y no dio el nombre. El marcador hace que se publique la ciudad en
+       lugar de la empresa: ver `employerLabel`. Cuando dé el nombre real se
+       reemplaza acá y aparece solo. */
     company: "[EMPRESA_BARCELONA]",
     title: "Desarrollador full stack junior",
     location: "Barcelona, España",
@@ -81,15 +82,24 @@ export const roles: Role[] = [
 ];
 
 /**
- * Los puestos que sí salen publicados.
+ * Cómo se nombra al empleador de un puesto.
  *
- * Un CV con una empresa inventada es un documento falso, así que un puesto cuya
- * empresa todavía es un marcador se queda afuera del sitio y del PDF. En
- * desarrollo se ve igual, para no olvidarlo: es la misma regla que `site.ts`
- * aplica a los datos de contacto.
+ * Cuando la empresa está confirmada, va su nombre. Cuando no, va la ciudad:
+ * "Barcelona, España". Omitir el nombre de una empresa es una decisión que se
+ * explica en una entrevista; escribir el nombre de una en la que no se trabajó
+ * es un antecedente falso, y eso no se publica desde acá.
+ */
+export function employerLabel(role: Role): string | null {
+  return realValue(role.company) ?? role.location ?? null;
+}
+
+/**
+ * Los puestos que salen publicados: los que se pueden nombrar de alguna forma
+ * honesta. Uno sin empresa confirmada y sin ciudad no dice nada, así que queda
+ * afuera del sitio y del PDF. En desarrollo se ven todos, para no olvidarlos.
  */
 export const publishedRoles: Role[] = roles.filter(
-  (role) => showPending || !isPlaceholder(role.company),
+  (role) => showPending || employerLabel(role) !== null,
 );
 
 /**

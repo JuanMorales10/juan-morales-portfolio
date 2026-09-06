@@ -88,7 +88,7 @@ export const navigation = [
  */
 export const pendingAssets = [
   "Dominio definitivo (variable de entorno `NEXT_PUBLIC_SITE_URL`).",
-  "Nombre real de la empresa de Barcelona (enero a noviembre de 2024): hasta que esté, ese puesto no se publica.",
+  "Nombre real de la empresa de Barcelona (enero a noviembre de 2024): mientras tanto el puesto sale con la ciudad en lugar de la empresa.",
   "Decidir si el teléfono va en el CV público: recursos humanos lo busca, pero queda expuesto en una página abierta.",
   "Entre noviembre de 2024 y febrero de 2026 Juan estuvo parado en tecnología. El CV muestra el hueco sin explicarlo.",
 ] as const;

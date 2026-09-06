@@ -3,7 +3,7 @@ import { DirectionalLink } from "@/components/primitives/actions";
 import { PendingNote } from "@/components/primitives/pending-note";
 import { RevealGroup, RevealItem } from "@/components/primitives/reveal";
 import { capabilities } from "@/content/capabilities";
-import { credentials, languages, publishedRoles } from "@/content/experience";
+import { credentials, employerLabel, languages, publishedRoles } from "@/content/experience";
 import { hero, intro } from "@/content/profile";
 import { getProject } from "@/content/projects";
 import { contactLinks, realValue, site } from "@/content/site";
@@ -215,8 +215,16 @@ export function CvDocument() {
             <p className={`text-lead text-paper mt-6 print:mt-2 print:text-[10.5pt] ${prose}`}>
               {intro.lead}
             </p>
-            {intro.paragraphs.map((paragraph) => (
-              <p key={paragraph} className={`mt-4 print:mt-2 ${muted} ${prose}`}>
+            {/* En papel el perfil se corta después del primer párrafo. Los que
+                siguen describen Rienda en detalle y repiten, casi con las
+                mismas palabras, lo que la sección de experiencia dice tres
+                centímetros más abajo. En pantalla se leen enteros. */}
+            {intro.paragraphs.map((paragraph, indice) => (
+              <p
+                key={paragraph}
+                data-print={indice > 0 ? "hide" : undefined}
+                className={`mt-4 print:mt-2 ${muted} ${prose}`}
+              >
                 {paragraph}
               </p>
             ))}
@@ -227,9 +235,10 @@ export function CvDocument() {
               Experiencia
             </h2>
 
-            <div className="mt-8 flex flex-col gap-10 print:mt-3 print:gap-4">
+            <div className="mt-8 flex flex-col gap-10 print:mt-3 print:gap-3">
               {publishedRoles.map((role) => {
                 const caseStudy = role.project ? getProject(role.project) : undefined;
+                const empresa = realValue(role.company);
 
                 return (
                   /* Sin `print-avoid-break`: un puesto entero mide más que lo
@@ -239,23 +248,23 @@ export function CvDocument() {
                      la regla `break-after: avoid` de globals.css ya evita lo
                      único intolerable, que un título quede solo abajo de todo. */
                   <article key={role.id} className="hairline-t pt-6 print:pt-2">
-                    <p className={metaLine}>{role.period}</p>
+                    <p className={`print-keep-next ${metaLine}`}>{role.period}</p>
                     <h3 className="text-h4 text-paper mt-2 print:mt-1 print:text-[11pt] print:text-black">
                       {role.title}
                     </h3>
                     <p className={`mt-1 ${muted}`}>
-                      {role.location ? <span>{role.location} · </span> : null}
-                      {role.companyUrl ? (
+                      {empresa && role.location ? <span>{role.location} · </span> : null}
+                      {empresa && role.companyUrl ? (
                         <DirectionalLink
                           href={role.companyUrl}
                           external
                           printUrl={printableUrl(role.companyUrl)}
                           className="hover:text-paper"
                         >
-                          {role.company}
+                          {empresa}
                         </DirectionalLink>
                       ) : (
-                        role.company
+                        employerLabel(role)
                       )}
                     </p>
 

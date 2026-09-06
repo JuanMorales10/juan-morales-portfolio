@@ -109,7 +109,7 @@ falso ni un enlace roto**. La lista viva está en `pendingAssets`, dentro de
 `src/content/site.ts`. Hoy:
 
 - Dominio propio (`NEXT_PUBLIC_SITE_URL`). Hoy apunta a la URL de Vercel; Juan lo cambia cuando tenga el dominio.
-- Nombre real de la empresa de Barcelona (enero a noviembre de 2024). Hasta que esté, ese puesto no se publica.
+- Nombre real de la empresa de Barcelona (enero a noviembre de 2024). Mientras tanto el puesto se publica con la ciudad en lugar de la empresa.
 - Si el teléfono va en el CV público.
 - Entre noviembre de 2024 y febrero de 2026 Juan estuvo parado en tecnología. Hoy el CV muestra ese hueco sin explicarlo.
 
