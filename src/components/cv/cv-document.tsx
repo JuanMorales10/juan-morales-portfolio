@@ -32,7 +32,7 @@ import { contactLinks, realValue, site } from "@/content/site";
  */
 
 /** Título de sección. En papel baja a un cuerpo que no roba media hoja. */
-const sectionTitle = "text-h3 text-paper print:text-[12.5pt] print:text-black";
+const sectionTitle = "text-h3 text-paper print:text-[12pt] print:text-black";
 
 /** Texto secundario: papel apagado en pantalla, negro en la hoja. */
 const muted = "text-paper-muted print:text-black";
@@ -78,7 +78,7 @@ export function CvDocument() {
           que apilar `md:` y `print:` sobre la misma propiedad deja el resultado
           atado a cuál de las dos variantes se generó última. Un solo valor de
           pantalla y un `print:` explícito no dependen de ese orden. */}
-      <div className="grid12 gap-y-14 pt-28 pb-24 print:gap-y-4 print:pt-0 print:pb-0">
+      <div className="grid12 gap-y-14 pt-28 pb-24 print:gap-y-3 print:pt-0 print:pb-0">
         <header className="col-span-12">
           <div
             data-print="hide"
@@ -98,13 +98,13 @@ export function CvDocument() {
             </RevealItem>
             <RevealItem
               as="h1"
-              className="text-h1 text-paper mt-6 print:mt-1 print:text-[22pt] print:text-black"
+              className="text-h1 text-paper mt-6 print:mt-1 print:text-[20pt] print:text-black"
             >
               {site.name}
             </RevealItem>
             <RevealItem
               as="p"
-              className={`text-lead mt-6 max-w-[46rem] print:mt-1 print:max-w-none print:text-[10.5pt] ${muted}`}
+              className={`text-lead mt-6 max-w-[46rem] print:mt-1 print:max-w-none print:text-[10pt] ${muted}`}
             >
               {hero.titlePlain}
             </RevealItem>
@@ -148,6 +148,19 @@ export function CvDocument() {
                 </dd>
               </div>
             )}
+            {/* Los idiomas viven en la ficha y no en una sección aparte: es de
+                lo primero que filtra recursos humanos, así que conviene que se
+                lea junto al resto de los datos duros y no al final de la
+                segunda hoja. */}
+            <div className="hairline-t py-3 print:pt-1 print:pb-0">
+              <dt className={metaLine}>Idiomas</dt>
+              <dd className="text-paper mt-1 print:text-black">
+                {languages
+                  .map((language) => `${language.name}: ${language.level.toLocaleLowerCase("es-AR")}`)
+                  .join(". ")}
+                .
+              </dd>
+            </div>
             <div className="hairline-t py-3 print:pt-1 print:pb-0">
               <dt className={metaLine}>Enlaces</dt>
               <dd className="mt-1 flex flex-col items-start gap-1.5">
@@ -321,9 +334,9 @@ export function CvDocument() {
               Habilidades
             </h2>
 
-            <div className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 print:mt-3 print:grid-cols-1 print:gap-y-2">
+            <div className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 print:mt-2 print:grid-cols-1 print:gap-y-1">
               {capabilities.map((group) => (
-                <div key={group.id} className="print-avoid-break">
+                <div key={group.id}>
                   {/* En pantalla el grupo es una tarjeta con título y una línea
                       que explica por qué existe. En papel, ese título se mete
                       adentro del párrafo: cuatro encabezados sueltos costaban
@@ -342,29 +355,6 @@ export function CvDocument() {
             </div>
           </section>
 
-          {/* Los idiomas son de las primeras cosas que filtra recursos humanos y
-              faltaban. Van en una línea sola, sin columnas: es el formato que
-              cualquier lector, humano o automático, extrae sin ambigüedad. */}
-          <section aria-labelledby="cv-idiomas" className="mt-16 print:mt-3">
-            <h2 id="cv-idiomas" className={sectionTitle}>
-              Idiomas
-            </h2>
-            <ul data-print="hide" className="mt-6 flex flex-col gap-2">
-              {languages.map((language) => (
-                <li key={language.id} className="text-paper">
-                  {language.name}: {language.level.toLocaleLowerCase("es-AR")}.
-                </li>
-              ))}
-            </ul>
-            {/* En papel los tres idiomas van en un renglón. Como lista ocupaban
-                cuatro y empujaban el CV a una tercera hoja por cuatro palabras. */}
-            <p className="hidden print:mt-1 print:block print:text-black">
-              {languages
-                .map((language) => `${language.name}: ${language.level.toLocaleLowerCase("es-AR")}`)
-                .join(". ")}
-              .
-            </p>
-          </section>
         </div>
       </div>
     </div>

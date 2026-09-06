@@ -103,21 +103,16 @@ export const languages: Language[] = [
   { id: "portugues", name: "Portugués", level: "Nivel básico" },
 ];
 
+/**
+ * Formación. Cada dato de acá sale del certificado, no de la memoria.
+ *
+ * Los diplomas de Digital House, Egg, Fundación Esplai, CoderHouse y Platzi
+ * están todos, y ninguno declara mes de inicio: dicen qué programa, cuántas
+ * horas y cuándo se aprobó. Así se escriben acá. Las horas pesan más que un
+ * rango de fechas y, a diferencia del rango, se pueden verificar: son la
+ * respuesta correcta a "esto no coincide con tu perfil viejo".
+ */
 export const credentials: Credential[] = [
-  {
-    id: "digital-house",
-    institution: "Digital House",
-    program: "Full Stack Web Development",
-    period: "Abril a noviembre de 2023",
-    details: ["Desarrollo web full stack."],
-  },
-  {
-    id: "egg",
-    institution: "Egg Cooperation / Egg Live",
-    program: "Full-Stack Developer",
-    period: "Septiembre de 2021 a noviembre de 2022",
-    details: ["Calificación final: 91."],
-  },
   {
     id: "esplai",
     institution: "Fundación Esplai / Talent IT",
@@ -130,5 +125,43 @@ export const credentials: Credential[] = [
       "Proyecto final.",
     ],
     note: "Certificado de aprovechamiento emitido en Barcelona. El original no se publica acá porque incluye un número de identificación personal.",
+  },
+  {
+    id: "digital-house",
+    institution: "Digital House",
+    program: "Programación Web Full Stack",
+    period: "Noviembre de 2023",
+    details: [
+      "450 horas lectivas.",
+      "JavaScript, Node.js, Express, React, HTML5, CSS, MySQL y Git.",
+    ],
+  },
+  {
+    id: "platzi",
+    institution: "Platzi",
+    program: "JavaScript, curso básico y curso práctico",
+    period: "Marzo y abril de 2023",
+    details: ["40 horas de teoría y práctica entre los dos cursos."],
+  },
+  {
+    id: "egg",
+    institution: "Egg Cooperation / Egg Live",
+    program: "Programación Web Full Stack",
+    period: "Noviembre de 2022",
+    details: [
+      "600 horas teóricas y prácticas.",
+      "Java, Spring, MySQL, Git, HTML5, CSS3, JavaScript y React.",
+      "Calificación final: 91.",
+    ],
+  },
+  {
+    id: "coderhouse",
+    institution: "CoderHouse",
+    program: "JavaScript y Marketing Digital",
+    period: "2022",
+    details: [
+      "JavaScript: 34 horas, con distinción Top 10 del curso.",
+      "Marketing Digital, community manager y publicidad: 42 horas.",
+    ],
   },
 ];

@@ -112,7 +112,6 @@ falso ni un enlace roto**. La lista viva está en `pendingAssets`, dentro de
 - Nombre real de la empresa de Barcelona (enero a noviembre de 2024). Hasta que esté, ese puesto no se publica.
 - Si el teléfono va en el CV público.
 - Entre noviembre de 2024 y febrero de 2026 Juan estuvo parado en tecnología. Hoy el CV muestra ese hueco sin explicarlo.
-- Confirmar la emisión del certificado de IA: el diploma dice 31 de julio de 2024 y el brief decía agosto.
 
 ### Un archivo que quedó afuera a propósito
 

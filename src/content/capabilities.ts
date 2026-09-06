@@ -55,7 +55,6 @@ export const capabilities: CapabilityGroup[] = [
       "RAG",
       "Fine-tuning",
       "Automatización de procesos",
-      "IA aplicada a producto, desarrollo y operación",
     ],
   },
   {
