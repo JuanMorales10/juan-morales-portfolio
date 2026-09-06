@@ -7,7 +7,7 @@ import { Reveal } from "@/components/primitives/reveal";
 import { ScrollParallax } from "@/components/primitives/scroll-parallax";
 import { SectionLabel } from "@/components/primitives/section";
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline";
-import { roles } from "@/content/experience";
+import { publishedRoles } from "@/content/experience";
 import { getProject } from "@/content/projects";
 import type { Project, Role } from "@/content/types";
 
@@ -27,7 +27,7 @@ import type { Project, Role } from "@/content/types";
  * como antes.
  */
 export function Experience() {
-  const entries: TimelineEntry[] = roles.map((role) => ({
+  const entries: TimelineEntry[] = publishedRoles.map((role) => ({
     id: role.id,
     title: role.period,
     content: (

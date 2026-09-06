@@ -3,7 +3,7 @@ import { DirectionalLink } from "@/components/primitives/actions";
 import { PendingNote } from "@/components/primitives/pending-note";
 import { RevealGroup, RevealItem } from "@/components/primitives/reveal";
 import { capabilities } from "@/content/capabilities";
-import { credentials, roles } from "@/content/experience";
+import { credentials, languages, publishedRoles } from "@/content/experience";
 import { hero, intro } from "@/content/profile";
 import { getProject } from "@/content/projects";
 import { contactLinks, realValue, site } from "@/content/site";
@@ -69,6 +69,7 @@ function caseStudyPrintUrl(slug: string): string | undefined {
 export function CvDocument() {
   const email = realValue(site.email);
   const github = realValue(site.github);
+  const phone = realValue(site.phone);
 
   return (
     <div className="shell print:max-w-none print:px-0">
@@ -121,7 +122,7 @@ export function CvDocument() {
             Contacto
           </h2>
 
-          <dl className="mt-5 print:mt-2 print:grid print:grid-cols-3 print:gap-x-8">
+          <dl className="mt-5 print:mt-2">
             <div className="hairline-t py-3 print:pt-1 print:pb-0">
               <dt className={metaLine}>Rol</dt>
               <dd className="text-paper mt-1 print:text-black">{site.role}</dd>
@@ -130,6 +131,23 @@ export function CvDocument() {
               <dt className={metaLine}>Ubicación</dt>
               <dd className="text-paper mt-1 print:text-black">{site.location}</dd>
             </div>
+            {phone ? (
+              <div className="hairline-t py-3 print:pt-1 print:pb-0">
+                <dt className={metaLine}>Teléfono</dt>
+                <dd className="text-paper mt-1 print:text-black">
+                  <DirectionalLink href={`tel:${phone.replace(/\s/g, "")}`} className={contactLink}>
+                    {phone}
+                  </DirectionalLink>
+                </dd>
+              </div>
+            ) : (
+              <div data-print="hide" className="hairline-t py-3">
+                <dt className={metaLine}>Teléfono</dt>
+                <dd className="mt-1">
+                  <PendingNote>Teléfono de contacto</PendingNote>
+                </dd>
+              </div>
+            )}
             <div className="hairline-t py-3 print:pt-1 print:pb-0">
               <dt className={metaLine}>Enlaces</dt>
               <dd className="mt-1 flex flex-col items-start gap-1.5">
@@ -191,25 +209,29 @@ export function CvDocument() {
             ))}
           </section>
 
-          <section aria-labelledby="cv-experiencia" className="mt-16 print:mt-6">
+          <section aria-labelledby="cv-experiencia" className="mt-16 print:mt-3">
             <h2 id="cv-experiencia" className={sectionTitle}>
               Experiencia
             </h2>
 
             <div className="mt-8 flex flex-col gap-10 print:mt-3 print:gap-4">
-              {roles.map((role) => {
+              {publishedRoles.map((role) => {
                 const caseStudy = role.project ? getProject(role.project) : undefined;
 
                 return (
-                  <article
-                    key={role.id}
-                    className="print-avoid-break hairline-t pt-6 print:pt-2"
-                  >
+                  /* Sin `print-avoid-break`: un puesto entero mide más que lo
+                     que suele quedar libre al pie, así que saltaba a la hoja
+                     siguiente y dejaba seis centímetros muertos. Que una lista
+                     de tareas siga en la página de al lado es normal en un CV;
+                     la regla `break-after: avoid` de globals.css ya evita lo
+                     único intolerable, que un título quede solo abajo de todo. */
+                  <article key={role.id} className="hairline-t pt-6 print:pt-2">
                     <p className={metaLine}>{role.period}</p>
                     <h3 className="text-h4 text-paper mt-2 print:mt-1 print:text-[11pt] print:text-black">
                       {role.title}
                     </h3>
                     <p className={`mt-1 ${muted}`}>
+                      {role.location ? <span>{role.location} · </span> : null}
                       {role.companyUrl ? (
                         <DirectionalLink
                           href={role.companyUrl}
@@ -260,7 +282,7 @@ export function CvDocument() {
             </div>
           </section>
 
-          <section aria-labelledby="cv-formacion" className="mt-16 print:mt-6">
+          <section aria-labelledby="cv-formacion" className="mt-16 print:mt-3">
             <h2 id="cv-formacion" className={sectionTitle}>
               Formación
             </h2>
@@ -282,7 +304,10 @@ export function CvDocument() {
                     {credential.details.join(" ")}
                   </p>
                   {credential.note ? (
-                    <p className="text-paper-faint text-micro mt-3 max-w-[34rem] print:mt-1 print:max-w-none print:text-[#444444]">
+                    <p
+                      data-print="hide"
+                      className="text-paper-faint text-micro mt-3 max-w-[34rem]"
+                    >
                       {credential.note}
                     </p>
                   ) : null}
@@ -291,26 +316,54 @@ export function CvDocument() {
             </div>
           </section>
 
-          <section aria-labelledby="cv-capacidades" className="mt-16 print:mt-6">
+          <section aria-labelledby="cv-capacidades" className="mt-16 print:mt-3">
             <h2 id="cv-capacidades" className={sectionTitle}>
-              Capacidades
+              Habilidades
             </h2>
 
-            <div className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 print:mt-3 print:grid-cols-2 print:gap-y-3">
+            <div className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 print:mt-3 print:grid-cols-1 print:gap-y-2">
               {capabilities.map((group) => (
                 <div key={group.id} className="print-avoid-break">
-                  <h3 className="text-h4 text-paper print:text-[11pt] print:text-black">
-                    {group.title}
-                  </h3>
-                  <p className="text-paper-faint text-micro mt-1 print:text-[#444444]">
+                  {/* En pantalla el grupo es una tarjeta con título y una línea
+                      que explica por qué existe. En papel, ese título se mete
+                      adentro del párrafo: cuatro encabezados sueltos costaban
+                      una hoja entera y un lector automático agrupa igual de
+                      bien leyendo "Desarrollo: Next.js, React, ...". */}
+                  <h3 className="text-h4 text-paper print:hidden">{group.title}</h3>
+                  <p data-print="hide" className="text-paper-faint text-micro mt-1">
                     {group.intro}
                   </p>
-                  <p className="text-paper mt-3 print:mt-1 print:text-black">
+                  <p className="text-paper mt-3 print:mt-0 print:text-black">
+                    <span className="hidden font-medium print:inline">{group.title}: </span>
                     {group.items.join(", ")}
                   </p>
                 </div>
               ))}
             </div>
+          </section>
+
+          {/* Los idiomas son de las primeras cosas que filtra recursos humanos y
+              faltaban. Van en una línea sola, sin columnas: es el formato que
+              cualquier lector, humano o automático, extrae sin ambigüedad. */}
+          <section aria-labelledby="cv-idiomas" className="mt-16 print:mt-3">
+            <h2 id="cv-idiomas" className={sectionTitle}>
+              Idiomas
+            </h2>
+            <ul data-print="hide" className="mt-6 flex flex-col gap-2">
+              {languages.map((language) => (
+                <li key={language.id} className="text-paper">
+                  {language.name}: {language.level.toLocaleLowerCase("es-AR")}.
+                </li>
+              ))}
+            </ul>
+            {/* En papel los tres idiomas van en un renglón. Como lista ocupaban
+                cuatro y empujaban el CV a una tercera hoja por cuatro palabras. */}
+            <p className="hidden print:mt-1 print:block print:text-black">
+              {languages
+                .map((language) => `${language.name}: ${language.level.toLocaleLowerCase("es-AR")}`)
+                .join(". ")}
+              .
+            </p>
           </section>
         </div>
       </div>

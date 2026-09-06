@@ -51,12 +51,32 @@ reciben tipado.
 |---|---|
 | `src/content/site.ts` | dominio, correo, GitHub, LinkedIn, navegación y la lista de pendientes |
 | `src/content/profile.ts` | hero y presentación |
-| `src/content/experience.ts` | roles y formación |
+| `src/content/experience.ts` | roles, formación e idiomas |
 | `src/content/capabilities.ts` | los cuatro grupos de capacidades (también alimentan la franja de stack) |
 | `src/content/approach.ts` | "Cómo trabajo" y "IA como herramienta de trabajo" |
 | `src/content/projects/*.ts` | un archivo por proyecto |
 | `src/content/projects/index.ts` | el registro y el orden |
 | `src/content/types.ts` | los tipos de todo lo anterior |
+
+### El CV que se descarga
+
+El botón de `/cv` baja un archivo real: `public/Juan-Morales-CV.pdf`. No se genera
+en cada visita ni lo dibuja una librería: lo imprime Chrome desde la misma página,
+así que el texto sale seleccionable y en el orden del documento, que es lo que
+necesita leer un sistema de recursos humanos. Sale en una sola columna a propósito:
+las de dos y tres columnas se leen intercaladas cuando el que extrae el texto va
+por posición y no por documento.
+
+```bash
+npm run cv:pdf
+```
+
+Compila, levanta el sitio en el puerto 3100, imprime y deja el PDF junto a su huella
+en `src/content/cv-pdf.json`. Después hay que commitear los dos archivos.
+
+**`npm run build` se corta si el contenido del CV cambió y el PDF quedó viejo.** Es a
+propósito: el archivo que se baja una empresa no puede decir algo distinto que la
+página. El mensaje del error dice qué correr.
 
 ### Los proyectos
 
@@ -89,6 +109,9 @@ falso ni un enlace roto**. La lista viva está en `pendingAssets`, dentro de
 `src/content/site.ts`. Hoy:
 
 - Dominio propio (`NEXT_PUBLIC_SITE_URL`). Hoy apunta a la URL de Vercel; Juan lo cambia cuando tenga el dominio.
+- Nombre real de la empresa de Barcelona (enero a junio de 2024). Hasta que esté, ese puesto no se publica.
+- Si el teléfono va en el CV público.
+- Qué hubo entre julio de 2024 y febrero de 2026, que hoy queda como hueco en el CV.
 - Confirmar la emisión del certificado de IA: el diploma dice 31 de julio de 2024 y el brief decía agosto.
 
 ### Un archivo que quedó afuera a propósito

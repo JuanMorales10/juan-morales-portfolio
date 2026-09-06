@@ -1,4 +1,5 @@
-import type { Credential, Role } from "./types";
+import { isPlaceholder, showPending } from "./site";
+import type { Credential, Language, Role } from "./types";
 
 /**
  * Recorrido profesional. Fechas y responsabilidades tal como las declaró Juan.
@@ -43,6 +44,63 @@ export const roles: Role[] = [
     ],
     project: "portal-poltrona",
   },
+  {
+    id: "barcelona-junior",
+    /* Juan corrigió que este puesto fue en una empresa de España y en nivel
+       junior. Hasta que dé el nombre real, la empresa queda como marcador y el
+       puesto no se publica: ver `publishedRoles` más abajo. */
+    company: "[EMPRESA_BARCELONA]",
+    title: "Desarrollador full stack junior",
+    location: "Barcelona, España",
+    start: "2024-01",
+    end: "2024-06",
+    period: "Enero a junio de 2024",
+    summary: "Desarrollo web sobre un producto de reservas y membresías.",
+    responsibilities: [
+      "Frontend con React, HTML5 y CSS3.",
+      "APIs REST con Node.js y Express, sobre una base MySQL.",
+    ],
+  },
+  {
+    id: "dimo",
+    company: "Dimo",
+    title: "Arquitecto y desarrollador web full stack",
+    start: "2023-08",
+    end: "2024-01",
+    period: "Agosto de 2023 a enero de 2024",
+    summary:
+      "Plataforma de viajes con reservas y pagos en línea, desde la arquitectura hasta la interfaz.",
+    responsibilities: [
+      "Interfaces de usuario con React, con foco en la navegación.",
+      "Backend con Node.js y Express, con una arquitectura pensada para escalar.",
+      "Diseño y gestión de la base de datos MySQL, optimizada para reservas y consultas.",
+      "Integración de Google Calendar, Google Maps y Mercado Pago.",
+      "Sistema de reservas propio para la planificación de viajes.",
+    ],
+  },
+];
+
+/**
+ * Los puestos que sí salen publicados.
+ *
+ * Un CV con una empresa inventada es un documento falso, así que un puesto cuya
+ * empresa todavía es un marcador se queda afuera del sitio y del PDF. En
+ * desarrollo se ve igual, para no olvidarlo: es la misma regla que `site.ts`
+ * aplica a los datos de contacto.
+ */
+export const publishedRoles: Role[] = roles.filter(
+  (role) => showPending || !isPlaceholder(role.company),
+);
+
+/**
+ * Idiomas, tal como los declaró Juan en su CV anterior. Sin certificados que
+ * los respalden, así que van con el nivel dicho en palabras y no con el marco
+ * común europeo, que promete una acreditación que no existe.
+ */
+export const languages: Language[] = [
+  { id: "castellano", name: "Castellano", level: "Nativo" },
+  { id: "ingles", name: "Inglés", level: "Nivel alto" },
+  { id: "portugues", name: "Portugués", level: "Nivel básico" },
 ];
 
 export const credentials: Credential[] = [

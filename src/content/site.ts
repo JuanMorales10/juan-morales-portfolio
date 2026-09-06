@@ -53,6 +53,14 @@ export const site = {
 
   email: "juanmoralesp19@gmail.com" as Pending,
 
+  /**
+   * Teléfono de contacto. Recursos humanos lo busca y su ausencia se nota, pero
+   * publicarlo en una página abierta y en un PDF descargable lo deja al alcance
+   * de cualquier robot que junte números. Queda como marcador hasta que Juan
+   * decida: mientras tanto no se publica, igual que el resto de los pendientes.
+   */
+  phone: "[TELEFONO]" as Pending,
+
   /** Cuenta real: la referencia el propio README de Llavero. */
   github: "https://github.com/JuanMorales10" as Pending,
 
@@ -80,5 +88,8 @@ export const navigation = [
  */
 export const pendingAssets = [
   "Dominio definitivo (variable de entorno `NEXT_PUBLIC_SITE_URL`).",
+  "Nombre real de la empresa de Barcelona (enero a junio de 2024): hasta que esté, ese puesto no se publica.",
+  "Decidir si el teléfono va en el CV público: recursos humanos lo busca, pero queda expuesto en una página abierta.",
+  "Qué hizo Juan entre julio de 2024 y febrero de 2026: hoy el CV muestra ese hueco.",
   "Confirmar la fecha de emisión del certificado de IA: el diploma dice 31 de julio de 2024, el brief decía agosto de 2024.",
 ] as const;

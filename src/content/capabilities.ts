@@ -21,12 +21,26 @@ export const capabilities: CapabilityGroup[] = [
     id: "desarrollo",
     title: "Desarrollo",
     intro: "Construirlo yo mismo, con una arquitectura que se pueda sostener.",
+    /*
+     * Van también las que Juan usó antes de Rienda y seguía sosteniendo: el
+     * lado servidor con Node y Express, y MySQL de los años de Dimo. Un
+     * buscador de recursos humanos filtra por estas palabras, y estaban solo
+     * adentro de las tareas de un puesto, donde una búsqueda por habilidad no
+     * las encuentra. Java y Spring quedan afuera a propósito: los tocó en 2022
+     * y no son lo que defendería hoy en una entrevista.
+     */
     items: [
       "Next.js",
       "React",
       "TypeScript",
+      "JavaScript",
+      "Node.js",
+      "Express",
       "PostgreSQL",
       "Prisma",
+      "MySQL",
+      "APIs REST",
+      "Git",
       "Arquitectura de aplicaciones",
       "Integraciones",
       "Seguridad",

@@ -1,5 +1,5 @@
 import { capabilities } from "@/content/capabilities";
-import { credentials, roles } from "@/content/experience";
+import { credentials, publishedRoles } from "@/content/experience";
 import { realValue, site } from "@/content/site";
 
 /**
@@ -16,7 +16,7 @@ export function personJsonLd() {
     (value): value is string => Boolean(value),
   );
 
-  const currentRole = roles.find((role) => role.end === null);
+  const currentRole = publishedRoles.find((role) => role.end === null);
 
   return {
     "@context": "https://schema.org",
@@ -34,7 +34,7 @@ export function personJsonLd() {
     },
     ...(email ? { email: `mailto:${email}` } : {}),
     sameAs,
-    worksFor: roles
+    worksFor: publishedRoles
       .filter((role) => role.end === null)
       .map((role) => ({
         "@type": "Organization",

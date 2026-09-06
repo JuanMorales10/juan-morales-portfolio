@@ -1,32 +1,35 @@
 "use client";
 
-import { ActionButton } from "@/components/primitives/actions";
+import { ActionButton, ActionLink } from "@/components/primitives/actions";
 
 /**
- * Descarga del CV en PDF.
+ * Las dos formas de llevarse el CV.
  *
- * No generamos el archivo nosotros ni sumamos una librería para eso: llamamos
- * al diálogo de impresión y dejamos que el navegador aplique el bloque
- * `@media print` de globals.css. Lo que sale es un PDF real, en blanco y
- * negro, con el texto seleccionable y los enlaces impresos al lado de cada
- * nombre, en vez de una imagen del documento. El costo es que hay que decirle a
- * la persona qué va a pasar cuando aprete, y eso lo resuelve la línea de abajo.
+ * La principal es un archivo: `Juan-Morales-CV.pdf` está servido desde el
+ * sitio y el enlace lo baja de una. Antes esto abría el diálogo de impresión y
+ * le pedía a la persona que eligiera "Guardar como PDF", que es un paso de más
+ * justo en el momento en que alguien decidió quedarse con el CV.
  *
- * Todo el bloque lleva `data-print="hide"`: en la hoja no tiene sentido un
- * botón para imprimir, así que no hace falta corregirle el color.
+ * El archivo no se genera en cada visita: lo imprime Chrome desde esta misma
+ * página con `npm run cv:pdf` y se commitea. Por eso el texto sale
+ * seleccionable y en el orden del documento, que es lo que necesita leer un
+ * sistema de recursos humanos, y por eso `npm run build` se corta si el
+ * contenido cambió y el archivo quedó viejo.
+ *
+ * Imprimir queda como acción secundaria, para quien esté por mandarlo al papel.
+ *
+ * Todo el bloque lleva `data-print="hide"`: en la hoja no tienen sentido ni la
+ * descarga ni el botón de imprimir.
  */
 export function PrintButton() {
   return (
-    <div
-      data-print="hide"
-      className="flex flex-col items-start gap-2.5 sm:items-end"
-    >
-      <ActionButton variant="primary" onClick={() => window.print()}>
-        Descargar PDF
+    <div data-print="hide" className="flex flex-col items-start gap-2.5 sm:items-end">
+      <ActionLink href="/Juan-Morales-CV.pdf" variant="primary" download>
+        Descargar CV en PDF
+      </ActionLink>
+      <ActionButton variant="quiet" className="px-0 py-0" onClick={() => window.print()}>
+        o imprimir esta página
       </ActionButton>
-      <p className="text-paper-faint text-micro max-w-[30ch] sm:text-right">
-        Se abre el diálogo de impresión: elegí Guardar como PDF.
-      </p>
     </div>
   );
 }

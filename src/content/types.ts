@@ -20,9 +20,12 @@ export interface ExternalLink {
 
 export interface Role {
   id: string;
-  company: string;
+  /** Puede ser un marcador: los puestos sin empresa confirmada no se publican. */
+  company: Pending;
   companyUrl?: string;
   title: string;
+  /** Ciudad y país, cuando no coinciden con la base actual de Juan. */
+  location?: string;
   /** Formato ISO corto, `YYYY-MM`. Se usa para ordenar y para el JSON-LD. */
   start: string;
   /** `null` cuando el rol sigue vigente. */
@@ -45,6 +48,13 @@ export interface Credential {
   details: string[];
   /** Se muestra como nota al pie del ítem. */
   note?: string;
+}
+
+export interface Language {
+  id: string;
+  name: string;
+  /** Nivel dicho en palabras. No usamos el marco común europeo sin certificado. */
+  level: string;
 }
 
 export interface CapabilityGroup {

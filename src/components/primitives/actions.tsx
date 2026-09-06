@@ -34,12 +34,15 @@ export function ActionLink({
   children,
   variant = "primary",
   external = false,
+  download = false,
   className,
 }: {
   href: string;
   children: ReactNode;
   variant?: Variant;
   external?: boolean;
+  /** Baja el archivo en vez de navegar. Para el PDF del CV. */
+  download?: boolean;
   /**
    * Quedó de la v1, cuando había secciones claras y oscuras. En la v2 todo es
    * noche y no cambia nada; se conserva para no romper a quien lo pasa.
@@ -59,6 +62,17 @@ export function ActionLink({
     whileTap: { y: 0, scale: 0.98 },
     transition: springSoft,
   } as const;
+
+  if (download) {
+    /* Sin `target="_blank"`: el atributo `download` ya evita que el navegador
+       se quede mostrando el PDF, y una pestaña nueva encima molesta. */
+    return (
+      <motion.a href={href} download className={classes} {...motionProps}>
+        {children}
+        <ArrowDown />
+      </motion.a>
+    );
+  }
 
   if (external) {
     return (
@@ -185,6 +199,23 @@ function ArrowRight() {
       strokeLinejoin="round"
     >
       <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" />
+    </svg>
+  );
+}
+
+function ArrowDown() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="h-3.5 w-3.5 transition-transform duration-300 ease-out-expo group-hover:translate-y-1"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M8 2.5v11M3.5 9 8 13.5 12.5 9" />
     </svg>
   );
 }

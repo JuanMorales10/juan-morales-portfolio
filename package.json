@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/verificar-cv.mjs",
     "build": "next build",
+    "cv:pdf": "node scripts/cv-pdf.mjs",
+    "cv:verificar": "node scripts/verificar-cv.mjs",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
