@@ -53,8 +53,8 @@ export const roles: Role[] = [
     title: "Desarrollador full stack junior",
     location: "Barcelona, España",
     start: "2024-01",
-    end: "2024-06",
-    period: "Enero a junio de 2024",
+    end: "2024-11",
+    period: "Enero a noviembre de 2024",
     summary: "Desarrollo web sobre un producto de reservas y membresías.",
     responsibilities: [
       "Frontend con React, HTML5 y CSS3.",
