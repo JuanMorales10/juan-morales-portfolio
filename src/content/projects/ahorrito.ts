@@ -24,7 +24,7 @@ export const ahorrito: Project = {
   end: null,
   tagline: "Las finanzas personales de un argentino en un solo lugar, y un cerebro digital que las conecta.",
   summary:
-    "Un portal de finanzas personales para Argentina: ingresos, gastos, tarjetas, deudas, patrimonio, presupuestos y metas en un solo lugar, con importación de resúmenes clasificada por IA, un asistente que explica en simple y un Cerebro Digital que dibuja la plata de la persona como una red viva. De esta base salieron después Rienda y Llavero.",
+    "Una app de control de gastos y finanzas personales para Argentina: ingresos, gastos, tarjetas, deudas, patrimonio, presupuestos y metas en pesos y en dólares, con el dólar del día, la inflación y el monotributo adentro. El plan gratis alcanza para ordenar la plata; el Pro suma la IA: carga de gastos por foto y por voz, importación de resúmenes clasificada, un asistente que explica en simple y un Cerebro Digital que dibuja la plata como una red viva. De esta base salieron después Rienda y Llavero.",
   year: "Desde mayo de 2026",
   disciplines: ["Producto", "Arquitectura", "Desarrollo", "Visualización de datos"],
   stack: [
@@ -83,9 +83,10 @@ export const ahorrito: Project = {
         "Importador de resúmenes en CSV, Excel y PDF con detección de duplicados y clasificación automática por IA con nivel de confianza visible.",
         "Asistente financiero con chat sobre los datos del usuario, alertas por reglas, proyecciones con escenarios y reportes exportables.",
         "Cerebro Digital: motor determinístico del grafo, visualización con d3-force y la capa de IA que interpreta cada neurona.",
-        "Carga sin teclado: foto del ticket con OCR en el navegador y dictado por voz.",
+        "Carga sin teclado, en el plan Pro: foto del ticket o captura del historial de la billetera con OCR en el navegador, o dictado con la API de voz del navegador. A la IA viaja solo el texto, y devuelve un borrador con concepto, monto, fecha y categoría que la persona revisa antes de guardar.",
         "Cotizaciones del dólar y cripto en vivo, inflación por API y valores históricos expresados en pesos de hoy.",
-        "Identidad visual, landing pública, calculadoras públicas para SEO, suscripción Pro con Mercado Pago y despliegue en Vercel.",
+        "Identidad visual, calculadoras públicas para SEO, suscripción Pro con Mercado Pago y despliegue en Vercel.",
+        "Landing rehecha en septiembre de 2026: una pizarra de aeropuerto con las cotizaciones reales del día, un recorrido por capturas de la app con dock magnético, demos animadas de cada función y un cierre con shader. Componentes de Componentry adaptados a la marca sobre Motion, sin dependencias nuevas y respetando el movimiento reducido.",
       ],
     },
     {

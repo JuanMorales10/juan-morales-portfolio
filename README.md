@@ -165,7 +165,7 @@ Cada archivo de `src/components/ui/` lleva arriba el autor, la fuente y qué se 
 | Sticky Scroll Reveal | Aceternity | cómo trabajo, con una captura de un proyecto distinto por paso |
 | Blur Fade, Hover Border Gradient | Magic UI, Aceternity | entradas y el cierre de la sección de IA |
 | Timeline | Aceternity | recorrido |
-| Moving Border, Background Beams | Aceternity | contacto |
+| Magnetic Dock | Componentry | accesos fijos abajo: proyectos, CV y contacto |
 | Container Scroll Animation | Aceternity | portada de cada caso de estudio |
 
 Dependencias de producción: `next`, `react`, `react-dom`, `motion`, `clsx`,

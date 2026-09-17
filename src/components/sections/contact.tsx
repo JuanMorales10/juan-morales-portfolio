@@ -2,8 +2,6 @@ import { ActionLink, DirectionalLink } from "@/components/primitives/actions";
 import { PendingNote } from "@/components/primitives/pending-note";
 import { Reveal, RevealGroup, RevealItem } from "@/components/primitives/reveal";
 import { Section } from "@/components/primitives/section";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 import { realValue, site } from "@/content/site";
 
 /** `https://www.linkedin.com/in/x/` se imprime como `linkedin.com/in/x`, igual que los `printAs` del contenido. */
@@ -14,8 +12,10 @@ function printable(url: string): string {
 /**
  * Contacto: la última pantalla del sitio.
  *
- * Haces de jade detrás, un titular a tamaño display y un solo botón con el
- * borde en movimiento. Si el correo todavía no está cargado, el primario lleva
+ * Un halo jade quieto detrás, un titular a tamaño display y un solo botón. Los
+ * haces animados y el borde en movimiento de antes tenían el hilo principal
+ * ocupado casi todo el tiempo y el scroll del teléfono bajaba a 21 cuadros por
+ * segundo, así que se fueron. Si el correo todavía no está cargado, el primario lleva
  * a LinkedIn en lugar de mostrar un enlace roto.
  *
  * En táctil el botón no tiene hover: el relleno de hover pasa también a
@@ -38,9 +38,10 @@ export function Contact() {
       labelledBy="contacto-titulo"
       className="relative overflow-hidden"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
-        <BackgroundBeams />
-      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(60%_50%_at_20%_80%,color-mix(in_oklab,var(--color-jade)_16%,transparent),transparent)]"
+      />
 
       <div className="grid12 relative z-10 gap-y-14">
         <div className="col-span-12 lg:col-span-9">
@@ -65,18 +66,14 @@ export function Contact() {
 
           <Reveal delay={0.15}>
             <div className="mt-12 flex flex-wrap items-center gap-4">
-              <MovingBorderButton
-                as="a"
+              <a
                 href={primary.href}
                 target={primary.external ? "_blank" : undefined}
                 rel={primary.external ? "noopener noreferrer" : undefined}
-                borderRadius="999px"
-                duration={4200}
-                containerClassName="shadow-glow-sm max-lg:shadow-[0_0_36px_-6px_color-mix(in_oklab,var(--color-jade)_50%,transparent)]"
-                className="hover:bg-night-700 active:bg-night-700 px-7 py-3.5 text-[0.9375rem] font-medium transition-colors duration-300"
+                className="bg-paper text-night-900 hover:bg-jade-glow active:bg-jade-glow shadow-glow-sm inline-flex min-h-12 items-center rounded-full px-7 py-3.5 text-[0.9375rem] font-medium transition-colors duration-300"
               >
                 {primary.label}
-              </MovingBorderButton>
+              </a>
               <ActionLink href="/cv" variant="secondary">
                 Ver el CV
               </ActionLink>

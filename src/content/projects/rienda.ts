@@ -36,8 +36,8 @@ export const rienda: Project = {
   ],
   links: [{ label: "Visitar rienda.ar", href: "https://rienda.ar", printAs: "rienda.ar" }],
   cover: {
-    src: "/rienda/producto/vender-hero.png",
-    alt: "Pantalla de venta de Rienda con el detalle del ticket, los productos con más rotación y el total a cobrar.",
+    src: "/rienda/producto/cobrar-bunker.png",
+    alt: "Cobro de una venta en Rienda: el total a cobrar, los medios de pago con su tecla y el vuelto.",
     width: SHOT_W,
     height: SHOT_H,
   },
@@ -87,6 +87,7 @@ export const rienda: Project = {
         "El lenguaje del producto es el del comercio, no el de la contabilidad. Dónde está la plata, lo que pasó en el turno, tiene que haber en el cajón.",
         "Nada de números sin trazabilidad. Cada saldo se explica por movimientos que se pueden abrir y auditar, porque el día que no cierra es cuando el sistema se gana o se pierde la confianza.",
         "Aislar los datos de cada comercio desde el primer día es más barato que hacerlo después. Es una decisión de arquitectura, no una función.",
+        "La IA redacta; los números salen del sistema. Cada analista del Equipo IA trabaja solo con los datos de su gerencia y con los permisos de quien pregunta, y un informe que trae una cifra que no estaba en esos datos se descarta. Puede preparar una compra, una promoción o un mensaje, pero no compra, no publica ni mueve plata sin confirmación. El bot de WhatsApp sigue la misma regla: los precios salen del catálogo.",
       ],
     },
   ],
@@ -120,10 +121,10 @@ export const rienda: Project = {
       id: "productos",
       label: "Productos",
       title: "Precio, IVA, margen y stock en la misma fila",
-      body: "El catálogo se lee como una tabla de decisión, no como un inventario. Cuando un costo quedó desactualizado el sistema lo dice y aclara que el margen puede no ser real.",
+      body: "El catálogo se lee como una tabla de decisión: costo, precio, margen y stock por sucursal en la misma fila, con talles y colores como variantes de un mismo producto. Si el producto está publicado en Tienda Nube o Shopify, el stock que se cambia acá cambia allá.",
       shot: {
-        src: "/rienda/producto/productos-rd.png",
-        alt: "Pantalla Productos de Rienda: catálogo con precio, margen y stock por producto, filtros por sucursal y avisos de costos desactualizados y stock bajo.",
+        src: "/rienda/producto/productos-bunker.png",
+        alt: "Pantalla Productos de Rienda: costo, precio, margen y stock por sucursal, con los canales donde está publicado cada producto.",
         width: SHOT_W,
         height: SHOT_H,
       },
@@ -156,10 +157,10 @@ export const rienda: Project = {
       id: "tienda",
       label: "Tienda y WhatsApp",
       title: "El mismo catálogo, publicado",
-      body: "La tienda online del comercio se arma con los productos que ya están cargados, con su stock y sus precios. No hay un segundo catálogo que mantener al día.",
+      body: "La tienda online sale de los productos ya cargados, con sus fotos, talles, precios y stock, y el pedido se manda por WhatsApp. Ahí un bot con IA responde con el catálogo y los precios de lista, confirma el pedido y lo deja en la caja para cobrar. Mercado Libre, Tienda Nube y Shopify descuentan del mismo inventario.",
       shot: {
-        src: "/rienda/producto/tienda-rd.png",
-        alt: "Tienda online de un comercio hecha con Rienda: portada con el nombre del negocio, buscador, filtros por categoría y grilla de productos con precios.",
+        src: "/rienda/producto/vitrina-bunker.png",
+        alt: "Tienda online de un comercio hecha con Rienda, en dos teléfonos: la portada del catálogo y la ficha de un producto con sus talles.",
         width: SHOT_W,
         height: SHOT_H,
       },
@@ -168,10 +169,10 @@ export const rienda: Project = {
 
   gallery: [
     {
-      src: "/rienda/producto/vender-movil.png",
-      alt: "Pantalla de venta de Rienda en un teléfono, con el detalle del ticket y el botón de cobro al alcance del pulgar.",
-      width: 780,
-      height: 1560,
+      src: "/rienda/producto/vender-movil-bunker.png",
+      alt: "Pantalla de venta de Rienda en un teléfono: el ticket, el total a cobrar y el botón Cobrar al alcance del pulgar, con la barra de Vender, Turno, Facturar y Productos abajo.",
+      width: 1170,
+      height: 2532,
       caption: "La venta en el teléfono: la misma operación, resuelta con una mano.",
     },
     {

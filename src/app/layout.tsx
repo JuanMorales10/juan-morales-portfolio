@@ -3,6 +3,7 @@ import { JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { NoScriptFallback } from "@/components/chrome/no-script-fallback";
+import { ContactDock } from "@/components/chrome/contact-dock";
 import { SiteFooter } from "@/components/chrome/site-footer";
 import { SiteHeader } from "@/components/chrome/site-header";
 import { SkipLink } from "@/components/chrome/skip-link";
@@ -95,6 +96,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <SkipLink />
           <SiteHeader />
           <div className="flex flex-1 flex-col">{children}</div>
+          <ContactDock />
           <SiteFooter />
         </MotionRoot>
       </body>
